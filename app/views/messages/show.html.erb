@@ -1,0 +1,10 @@
+<h1><%= @message.title %></h1>
+<div class="text-muted">By <%= @message.user.name %></div>
+
+<%= simple_format @message.body %>
+
+<%= @message.state %> |
+<%= @message.job_id %> |
+<%= link_to "Undo Sending", undo_message_path(@message), method: :put, data: { behavior: "undo-link" } if @message.sending? %>
+<%= link_to 'Edit', edit_message_path(@message) if @message.draft? %> |
+<%= link_to 'Back', messages_path %>
